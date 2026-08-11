@@ -1,0 +1,1776 @@
+/* =========================================================
+   ROOT
+========================================================= */
+
+:root {
+
+    --primary-color: #ff4081;
+
+    --secondary-color:
+        rgba(255, 228, 225, 0.88);
+
+    --background-color:
+        #ffecd1;
+
+    --text-color:
+        #333;
+
+    --glass-border:
+        rgba(255, 255, 255, 0.55);
+
+}
+
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+
+    font-family:
+        'Roboto',
+        sans-serif;
+
+    background:
+        var(--background-color);
+
+    display:
+        flex;
+
+    justify-content:
+        center;
+
+    align-items:
+        flex-start;
+
+    min-height:
+        100vh;
+
+    margin:
+        0;
+
+    overflow-x:
+        hidden;
+
+    position:
+        relative;
+
+    color:
+        var(--text-color);
+
+}
+
+
+
+/* =========================================================
+   VIDEO BACKGROUND
+========================================================= */
+
+.video-background {
+
+    position:
+        fixed;
+
+    inset:
+        0;
+
+    overflow:
+        hidden;
+
+    z-index:
+        -4;
+
+}
+
+
+.video-background video {
+
+    min-width:
+        100%;
+
+    min-height:
+        100%;
+
+    width:
+        auto;
+
+    height:
+        auto;
+
+    position:
+        absolute;
+
+    top:
+        50%;
+
+    left:
+        50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    object-fit:
+        cover;
+
+}
+
+
+
+/* =========================================================
+   OVERLAY
+========================================================= */
+
+.overlay {
+
+    position:
+        fixed;
+
+    inset:
+        0;
+
+    background:
+
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(255,255,255,0.72),
+            transparent 35%
+        ),
+
+        linear-gradient(
+            135deg,
+            rgba(255,245,248,0.76),
+            rgba(255,236,209,0.66)
+        );
+
+    z-index:
+        -3;
+
+}
+
+
+
+/* =========================================================
+   CONFETTI
+========================================================= */
+
+.confetti {
+
+    position:
+        fixed;
+
+    inset:
+        0;
+
+    overflow:
+        hidden;
+
+    z-index:
+        -2;
+
+    pointer-events:
+        none;
+
+    background:
+        url('confetti.png') repeat;
+
+    opacity:
+        0.08;
+
+    animation:
+        fall 18s linear infinite;
+
+}
+
+
+
+/* =========================================================
+   CONTINUOUS LOVE RAIN
+========================================================= */
+
+#love-rain {
+
+    position:
+        fixed;
+
+    inset:
+        0;
+
+    width:
+        100%;
+
+    height:
+        100vh;
+
+    overflow:
+        hidden;
+
+    pointer-events:
+        none;
+
+    z-index:
+        0;
+
+}
+
+
+.love-rain-heart {
+
+    position:
+        absolute;
+
+    top:
+        -60px;
+
+    color:
+        var(--primary-color);
+
+    font-size:
+        18px;
+
+    opacity:
+        0;
+
+    filter:
+        drop-shadow(
+            0 3px 5px
+            rgba(255,64,129,0.25)
+        );
+
+    animation:
+        loveRainFall linear forwards;
+
+    will-change:
+        transform,
+        opacity;
+
+}
+
+
+@keyframes loveRainFall {
+
+    0% {
+
+        transform:
+            translate3d(0,-60px,0)
+            rotate(0deg)
+            scale(0.7);
+
+        opacity:
+            0;
+
+    }
+
+
+    10% {
+
+        opacity:
+            0.75;
+
+    }
+
+
+    50% {
+
+        opacity:
+            0.55;
+
+        transform:
+            translate3d(
+                var(--sway),
+                50vh,
+                0
+            )
+            rotate(180deg)
+            scale(1);
+
+    }
+
+
+    80% {
+
+        opacity:
+            0.35;
+
+    }
+
+
+    100% {
+
+        transform:
+            translate3d(
+                var(--sway-end),
+                115vh,
+                0
+            )
+            rotate(360deg)
+            scale(0.85);
+
+        opacity:
+            0;
+
+    }
+
+}
+
+
+
+/* =========================================================
+   SMALL FLOATING HEARTS
+========================================================= */
+
+#heart-container {
+
+    position:
+        fixed;
+
+    inset:
+        0;
+
+    pointer-events:
+        none;
+
+    overflow:
+        hidden;
+
+    z-index:
+        1;
+
+}
+
+
+.floating-heart {
+
+    position:
+        absolute;
+
+    bottom:
+        -40px;
+
+    font-size:
+        18px;
+
+    opacity:
+        0;
+
+    filter:
+        drop-shadow(
+            0 4px 8px
+            rgba(255,64,129,0.2)
+        );
+
+    animation:
+        floatHeart linear forwards;
+
+}
+
+
+.click-heart {
+
+    position:
+        fixed;
+
+    pointer-events:
+        none;
+
+    z-index:
+        30;
+
+    font-size:
+        22px;
+
+    animation:
+        clickHeart 900ms ease-out forwards;
+
+}
+
+
+
+/* =========================================================
+   MAIN CONTAINER
+========================================================= */
+
+.container {
+
+    width:
+        min(1000px, 100%);
+
+    padding:
+        30px 20px 50px;
+
+    text-align:
+        center;
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+}
+
+
+
+/* =========================================================
+   MAIN CARD
+========================================================= */
+
+.card {
+
+    background:
+        var(--secondary-color);
+
+    padding:
+        48px 50px;
+
+    border-radius:
+        24px;
+
+    border:
+        1px solid
+        var(--glass-border);
+
+    box-shadow:
+
+        0 20px 55px
+        rgba(80,20,50,0.18),
+
+        0 0 0 1px
+        rgba(255,255,255,0.15)
+        inset;
+
+    margin-bottom:
+        45px;
+
+    animation:
+        fadeIn 1.2s ease-out;
+
+    backdrop-filter:
+        blur(10px);
+
+    -webkit-backdrop-filter:
+        blur(10px);
+
+    position:
+        relative;
+
+    overflow:
+        hidden;
+
+}
+
+
+.card::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    width:
+        240px;
+
+    height:
+        240px;
+
+    border-radius:
+        50%;
+
+    background:
+        rgba(255,64,129,0.11);
+
+    top:
+        -150px;
+
+    right:
+        -100px;
+
+    filter:
+        blur(8px);
+
+}
+
+
+.card::after {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    width:
+        180px;
+
+    height:
+        180px;
+
+    border-radius:
+        50%;
+
+    background:
+        rgba(21,181,176,0.10);
+
+    bottom:
+        -120px;
+
+    left:
+        -80px;
+
+    filter:
+        blur(10px);
+
+}
+
+
+
+/* =========================================================
+   EYEBROW
+========================================================= */
+
+.eyebrow {
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+    font-size:
+        14px;
+
+    letter-spacing:
+        2px;
+
+    text-transform:
+        uppercase;
+
+    color:
+        #777;
+
+    margin-bottom:
+        10px;
+
+    font-weight:
+        500;
+
+}
+
+
+
+/* =========================================================
+   HEADING
+========================================================= */
+
+h1 {
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+    font-family:
+        'Pacifico',
+        cursive;
+
+    color:
+        var(--primary-color);
+
+    font-size:
+        clamp(38px,5.3vw,56px);
+
+    line-height:
+        1.2;
+
+    margin:
+        0 0 28px;
+
+    text-shadow:
+        0 4px 15px
+        rgba(255,64,129,0.15);
+
+}
+
+
+h1 span {
+
+    color:
+        #189ab4;
+
+    animation:
+        titleGlow 2.5s
+        ease-in-out
+        infinite;
+
+}
+
+
+
+/* =========================================================
+   MAIN PHOTO
+========================================================= */
+
+.main-photo-wrap {
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+    width:
+        100%;
+
+    display:
+        flex;
+
+    justify-content:
+        center;
+
+    align-items:
+        center;
+
+    margin:
+        0 auto;
+
+}
+
+
+.main-photo-wrap::after {
+
+    content:
+        "♥";
+
+    position:
+        absolute;
+
+    right:
+        8%;
+
+    top:
+        -14px;
+
+    width:
+        42px;
+
+    height:
+        42px;
+
+    display:
+        grid;
+
+    place-items:
+        center;
+
+    border-radius:
+        50%;
+
+    color:
+        white;
+
+    background:
+        var(--primary-color);
+
+    box-shadow:
+        0 8px 20px
+        rgba(255,64,129,0.3);
+
+    animation:
+        pulseHeart 1.8s
+        ease-in-out
+        infinite;
+
+}
+
+
+img.birthday-cake {
+
+    display:
+        block;
+
+    width:
+        min(760px,80%);
+
+    max-width:
+        80%;
+
+    height:
+        auto;
+
+    margin:
+        18px auto 28px;
+
+    border-radius:
+        18px;
+
+    animation:
+        photoFloat 5s
+        ease-in-out
+        infinite;
+
+    object-fit:
+        cover;
+
+    box-shadow:
+        0 14px 30px
+        rgba(0,0,0,0.28);
+
+    border:
+        5px solid
+        rgba(255,255,255,0.7);
+
+    transform:
+        translateX(0);
+
+}
+
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.intro-text {
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+    max-width:
+        850px;
+
+    margin:
+        0 auto 28px;
+
+    color:
+        #3f3f3f;
+
+    font-size:
+        18px;
+
+    line-height:
+        1.75;
+
+}
+
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.button-group {
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+}
+
+
+button {
+
+    font-family:
+        'Roboto',
+        sans-serif;
+
+    border:
+        none;
+
+    padding:
+        13px 24px;
+
+    border-radius:
+        999px;
+
+    font-size:
+        17px;
+
+    font-weight:
+        500;
+
+    cursor:
+        pointer;
+
+    margin:
+        5px;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease;
+
+}
+
+
+button:hover {
+
+    transform:
+        translateY(-3px);
+
+}
+
+
+button:active {
+
+    transform:
+        translateY(0)
+        scale(0.97);
+
+}
+
+
+
+/* =========================================================
+   LOVE BUTTON
+========================================================= */
+
+.love-button {
+
+    color:
+        white;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary-color),
+            #ff6b9d
+        );
+
+    box-shadow:
+        0 9px 22px
+        rgba(255,64,129,0.30);
+
+    animation:
+        softPulse 2.4s
+        ease-in-out
+        infinite;
+
+}
+
+
+.love-button:hover {
+
+    box-shadow:
+        0 13px 30px
+        rgba(255,64,129,0.42);
+
+}
+
+
+.button-icon {
+
+    display:
+        inline-block;
+
+    margin-right:
+        4px;
+
+}
+
+
+
+/* =========================================================
+   THEME BUTTON
+========================================================= */
+
+.theme-button {
+
+    color:
+        #555;
+
+    background:
+        rgba(255,255,255,0.72);
+
+    border:
+        1px solid
+        rgba(255,255,255,0.9);
+
+    box-shadow:
+        0 7px 18px
+        rgba(0,0,0,0.10);
+
+}
+
+
+.theme-button:hover {
+
+    background:
+        white;
+
+}
+
+
+
+/* =========================================================
+   GALLERY
+========================================================= */
+
+.gallery {
+
+    margin-top:
+        45px;
+
+}
+
+
+.gallery h2,
+.quote-section h2 {
+
+    color:
+        var(--primary-color);
+
+    font-family:
+        'Pacifico',
+        cursive;
+
+    font-size:
+        clamp(30px,4vw,40px);
+
+    margin:
+        0 0 22px;
+
+}
+
+
+.gallery h2 i {
+
+    font-family:
+        sans-serif;
+
+    font-size:
+        0.65em;
+
+    vertical-align:
+        middle;
+
+}
+
+
+.gallery-grid {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(220px,1fr)
+        );
+
+    gap:
+        18px;
+
+}
+
+
+.gallery-grid img {
+
+    width:
+        100%;
+
+    height:
+        250px;
+
+    border-radius:
+        16px;
+
+    box-shadow:
+        0 9px 22px
+        rgba(0,0,0,0.20);
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        filter 0.35s ease;
+
+    object-fit:
+        cover;
+
+    border:
+        3px solid
+        rgba(255,255,255,0.7);
+
+    cursor:
+        pointer;
+
+}
+
+
+.gallery-grid img:hover {
+
+    transform:
+        translateY(-7px)
+        scale(1.025);
+
+    box-shadow:
+        0 18px 32px
+        rgba(255,64,129,0.22);
+
+    filter:
+        saturate(1.08);
+
+}
+
+
+
+/* =========================================================
+   QUOTES
+========================================================= */
+
+.quote-section {
+
+    margin-top:
+        55px;
+
+}
+
+
+blockquote {
+
+    position:
+        relative;
+
+    font-size:
+        19px;
+
+    line-height:
+        1.65;
+
+    color:
+        #555;
+
+    margin:
+        0 0 20px;
+
+    padding:
+        24px 28px;
+
+    background:
+        rgba(255,255,255,0.83);
+
+    border-left:
+        5px solid
+        var(--primary-color);
+
+    border-right:
+        5px solid
+        var(--primary-color);
+
+    border-radius:
+        12px;
+
+    box-shadow:
+        0 7px 20px
+        rgba(0,0,0,0.12);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+
+}
+
+
+blockquote::before {
+
+    content:
+        "“";
+
+    position:
+        absolute;
+
+    left:
+        12px;
+
+    top:
+        -10px;
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size:
+        58px;
+
+    color:
+        var(--primary-color);
+
+    opacity:
+        0.22;
+
+}
+
+
+blockquote:hover {
+
+    transform:
+        translateY(-5px);
+
+    box-shadow:
+        0 14px 28px
+        rgba(255,64,129,0.14);
+
+}
+
+
+.name {
+
+    color:
+        rgba(247,64,9,0.85);
+
+    font-weight:
+        500;
+
+}
+
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+
+    background:
+        var(--secondary-color);
+
+    padding:
+        24px 20px;
+
+    border-radius:
+        20px;
+
+    box-shadow:
+        0 8px 22px
+        rgba(0,0,0,0.14);
+
+    margin-top:
+        50px;
+
+    border:
+        1px solid
+        var(--glass-border);
+
+    backdrop-filter:
+        blur(8px);
+
+}
+
+
+footer p {
+
+    color:
+        #444;
+
+    font-size:
+        15px;
+
+    margin:
+        0 0 10px;
+
+}
+
+
+.connect-text {
+
+    opacity:
+        0.78;
+
+}
+
+
+.heartbeat {
+
+    display:
+        inline-block;
+
+    animation:
+        heartbeat 1.3s infinite;
+
+}
+
+
+
+/* =========================================================
+   SOCIAL ICONS
+========================================================= */
+
+.social-icons {
+
+    display:
+        flex;
+
+    justify-content:
+        center;
+
+    gap:
+        14px;
+
+    margin-top:
+        16px;
+
+}
+
+
+.social-icons a {
+
+    display:
+        flex;
+
+    justify-content:
+        center;
+
+    align-items:
+        center;
+
+    width:
+        48px;
+
+    height:
+        48px;
+
+    border-radius:
+        50%;
+
+    background:
+        var(--primary-color);
+
+    color:
+        white;
+
+    text-decoration:
+        none;
+
+    box-shadow:
+        0 5px 13px
+        rgba(0,0,0,0.16);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+
+}
+
+
+.social-icons a:hover {
+
+    transform:
+        translateY(-5px)
+        scale(1.08);
+
+    box-shadow:
+        0 10px 22px
+        rgba(255,64,129,0.25);
+
+}
+
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes fadeIn {
+
+    0% {
+
+        opacity:
+            0;
+
+        transform:
+            translateY(24px);
+
+    }
+
+    100% {
+
+        opacity:
+            1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+@keyframes photoFloat {
+
+    0%,
+    100% {
+
+        transform:
+            translateY(0);
+
+    }
+
+    50% {
+
+        transform:
+            translateY(-7px);
+
+    }
+
+}
+
+
+@keyframes titleGlow {
+
+    0%,
+    100% {
+
+        text-shadow:
+            0 0 0
+            rgba(24,154,180,0);
+
+    }
+
+    50% {
+
+        text-shadow:
+            0 0 18px
+            rgba(24,154,180,0.28);
+
+    }
+
+}
+
+
+@keyframes pulseHeart {
+
+    0%,
+    100% {
+
+        transform:
+            scale(1);
+
+    }
+
+    50% {
+
+        transform:
+            scale(1.12);
+
+    }
+
+}
+
+
+@keyframes softPulse {
+
+    0%,
+    100% {
+
+        box-shadow:
+            0 9px 22px
+            rgba(255,64,129,0.25);
+
+    }
+
+    50% {
+
+        box-shadow:
+            0 9px 30px
+            rgba(255,64,129,0.45);
+
+    }
+
+}
+
+
+@keyframes heartbeat {
+
+    0%,
+    100% {
+
+        transform:
+            scale(1);
+
+    }
+
+    15% {
+
+        transform:
+            scale(1.25);
+
+    }
+
+    30% {
+
+        transform:
+            scale(1);
+
+    }
+
+    45% {
+
+        transform:
+            scale(1.18);
+
+    }
+
+}
+
+
+@keyframes floatHeart {
+
+    0% {
+
+        transform:
+            translate3d(0,0,0)
+            rotate(0deg)
+            scale(0.7);
+
+        opacity:
+            0;
+
+    }
+
+    12% {
+
+        opacity:
+            0.55;
+
+    }
+
+    50% {
+
+        transform:
+            translate3d(
+                var(--drift),
+                -50vh,
+                0
+            )
+            rotate(18deg)
+            scale(1);
+
+        opacity:
+            0.35;
+
+    }
+
+    100% {
+
+        transform:
+            translate3d(
+                calc(var(--drift) * -0.6),
+                -115vh,
+                0
+            )
+            rotate(-20deg)
+            scale(1.25);
+
+        opacity:
+            0;
+
+    }
+
+}
+
+
+@keyframes clickHeart {
+
+    0% {
+
+        opacity:
+            0;
+
+        transform:
+            translate(-50%,-50%)
+            scale(0.4);
+
+    }
+
+    20% {
+
+        opacity:
+            1;
+
+    }
+
+    100% {
+
+        opacity:
+            0;
+
+        transform:
+            translate(
+                calc(-50% + var(--x)),
+                calc(-50% - 110px)
+            )
+            scale(1.5)
+            rotate(18deg);
+
+    }
+
+}
+
+
+@keyframes fall {
+
+    0% {
+
+        transform:
+            translateY(-8%);
+
+    }
+
+    100% {
+
+        transform:
+            translateY(8%);
+
+    }
+
+}
+
+
+
+/* =========================================================
+   PHOTO CLICK
+========================================================= */
+
+.photo-pop {
+
+    animation:
+        photoPop 0.45s ease;
+
+}
+
+
+@keyframes photoPop {
+
+    0% {
+
+        transform:
+            scale(1);
+
+    }
+
+    50% {
+
+        transform:
+            scale(1.045)
+            rotate(-0.5deg);
+
+    }
+
+    100% {
+
+        transform:
+            scale(1);
+
+    }
+
+}
+
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width:768px) {
+
+    .container {
+
+        padding:
+            18px 12px 35px;
+
+    }
+
+
+    .card {
+
+        padding:
+            35px 22px;
+
+        border-radius:
+            20px;
+
+    }
+
+
+    img.birthday-cake {
+
+        width:
+            94%;
+
+        max-width:
+            94%;
+
+    }
+
+
+    .intro-text {
+
+        font-size:
+            17px;
+
+        line-height:
+            1.65;
+
+    }
+
+
+    .gallery-grid {
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+        gap:
+            12px;
+
+    }
+
+
+    .gallery-grid img {
+
+        height:
+            190px;
+
+    }
+
+
+    blockquote {
+
+        font-size:
+            17px;
+
+        padding:
+            20px 18px;
+
+    }
+
+}
+
+
+
+@media (max-width:480px) {
+
+    .eyebrow {
+
+        font-size:
+            11px;
+
+        letter-spacing:
+            1.3px;
+
+    }
+
+
+    h1 {
+
+        font-size:
+            32px;
+
+    }
+
+
+    .card {
+
+        padding:
+            30px 16px;
+
+    }
+
+
+    .intro-text {
+
+        font-size:
+            16px;
+
+    }
+
+
+    .gallery-grid {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .gallery-grid img {
+
+        height:
+            250px;
+
+    }
+
+
+    button {
+
+        width:
+            100%;
+
+        font-size:
+            16px;
+
+    }
+
+
+    .social-icons a {
+
+        width:
+            42px;
+
+        height:
+            42px;
+
+    }
+
+
+    .main-photo-wrap::after {
+
+        right:
+            2%;
+
+    }
+
+}
+
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion:reduce) {
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration:
+            0.01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        scroll-behavior:
+            auto !important;
+
+        transition-duration:
+            0.01ms !important;
+
+    }
+
+}
